@@ -1,29 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+    <meta charset="UTF-8">
     <title>Calculadora de Matrices</title>
     <link href="./styles/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 p-8">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">
             Calculadora de Matrices
         </h1>
+        
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4 text-gray-800">Estado del Sistema</h2>
+            <div id="connection-status" class="text-gray-600">
+                Verificando conexión...
+            </div>
+        </div>
+
+        <!-- Tests básicos -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Test de Conexión</h2>
+                <button 
+                    id="test-btn" 
+                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors">
+                    Probar Conexión Backend
+                </button>
+                <div id="test-result" class="mt-4 p-3 rounded hidden"></div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800">Test de Validación</h2>
+                <button 
+                    id="matrix-test-btn" 
+                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded transition-colors">
+                    Validar Matriz de Ejemplo
+                </button>
+                <div id="matrix-result" class="mt-4 p-3 rounded hidden"></div>
+            </div>
+        </div>
+
+        <!-- Suma de matrices -->
         <div class="bg-white rounded-lg shadow-md p-6">
-            <p class="text-center text-gray-600">
-                ¡Aplicación iniciada correctamente!
-            </p>
+            <h2 class="text-xl font-semibold mb-6 text-gray-800">🧮 Suma de Matrices</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+                <!-- Matriz A -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">Matriz A</h3>
+                    <div class="space-y-2">
+                        <div class="flex space-x-2">
+                            <input type="number" id="a11" class="w-16 p-2 border rounded text-center" placeholder="1" value="1">
+                            <input type="number" id="a12" class="w-16 p-2 border rounded text-center" placeholder="2" value="2">
+                        </div>
+                        <div class="flex space-x-2">
+                            <input type="number" id="a21" class="w-16 p-2 border rounded text-center" placeholder="3" value="3">
+                            <input type="number" id="a22" class="w-16 p-2 border rounded text-center" placeholder="4" value="4">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operador -->
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-blue-500">+</div>
+                    <button 
+                        id="sum-btn" 
+                        class="mt-4 bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded transition-colors">
+                        Calcular Suma
+                    </button>
+                </div>
+
+                <!-- Matriz B -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">Matriz B</h3>
+                    <div class="space-y-2">
+                        <div class="flex space-x-2">
+                            <input type="number" id="b11" class="w-16 p-2 border rounded text-center" placeholder="5" value="5">
+                            <input type="number" id="b12" class="w-16 p-2 border rounded text-center" placeholder="6" value="6">
+                        </div>
+                        <div class="flex space-x-2">
+                            <input type="number" id="b21" class="w-16 p-2 border rounded text-center" placeholder="7" value="7">
+                            <input type="number" id="b22" class="w-16 p-2 border rounded text-center" placeholder="8" value="8">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultado -->
+            <div id="sum-result" class="mt-6 p-4 rounded hidden">
+                <!-- Aquí se mostrará el resultado -->
+            </div>
         </div>
     </div>
+
+    <script src="renderer.js"></script>
+    <script src="ui-handlers.js"></script>
 </body>
 </html>
