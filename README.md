@@ -9,12 +9,13 @@ Aplicación de escritorio desarrollada con Electron y Python para realizar opera
 - **Comunicación**: API REST local
 
 ## 📁 Estructura del Proyecto
-
+```
 calculadora-matrices/
 ├── frontend/          # Aplicación Electron
 ├── backend/           # API Python con Flask
 ├── docs/             # Documentación
 └── README.md
+```
 
 ## 🛠️ Instalación y Ejecución
 
