@@ -1,4 +1,5 @@
 import numpy as np
+from logger_config import logger
 
 class MatrixCalculator:
     
@@ -232,4 +233,37 @@ class MatrixCalculator:
             return {
                 "success": False,
                 "error": str(e)
+            }
+    
+    @staticmethod
+    def matrix_inverse(matrix):
+        """Calcular la inversa de una matriz"""
+        try:
+            logger.info(f"Calculando inversa de matriz {np.array(matrix).shape}")
+            np_matrix = np.array(matrix, dtype=float)
+            
+            # Verificar que sea cuadrada
+            if np_matrix.shape[0] != np_matrix.shape[1]:
+                raise ValueError(f"La matriz debe ser cuadrada para calcular la inversa. Dimensiones: {np_matrix.shape[0]}x{np_matrix.shape[1]}")
+            
+            # Verificar que no sea singular
+            det = np.linalg.det(np_matrix)
+            if abs(det) < 1e-10:
+                raise ValueError(f"La matriz es singular (determinante ≈ 0: {det:.2e}). No tiene inversa.")
+            
+            inverse = np.linalg.inv(np_matrix)
+            
+            return {
+                "success": True,
+                "result": inverse.tolist(),
+                "operation": "inversa",
+                "dimensions": f"{np_matrix.shape[0]}x{np_matrix.shape[1]}",
+                "determinant": float(det)
+            }
+        except Exception as e:
+            logger.error(f"Error calculando inversa: {str(e)}")
+            return {
+                "success": False,
+                "error": str(e),
+                "operation": "inversa"
             }
