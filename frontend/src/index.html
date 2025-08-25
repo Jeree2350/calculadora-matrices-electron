@@ -8,9 +8,10 @@
 <body class="bg-gray-100 p-8">
     <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">
-            Calculadora de Matrices
+            🧮 Calculadora de Matrices
         </h1>
         
+        <!-- Estado del Sistema -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">
             <h2 class="text-xl font-semibold mb-4 text-gray-800">Estado del Sistema</h2>
             <div id="connection-status" class="text-gray-600">
@@ -41,11 +42,11 @@
             </div>
         </div>
 
-        <!-- Suma de matrices -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-xl font-semibold mb-6 text-gray-800">🧮 Suma de Matrices</h2>
+        <!-- Operaciones con dos matrices -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-6 text-gray-800">🔢 Operaciones con Dos Matrices</h2>
             
-            <div class="grid md:grid-cols-3 gap-6 items-center">
+            <div class="grid md:grid-cols-3 gap-6 items-center mb-6">
                 <!-- Matriz A -->
                 <div>
                     <h3 class="text-lg font-medium mb-3 text-gray-700">Matriz A</h3>
@@ -61,14 +62,26 @@
                     </div>
                 </div>
 
-                <!-- Operador -->
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-blue-500">+</div>
-                    <button 
-                        id="sum-btn" 
-                        class="mt-4 bg-purple-500 hover:bg-purple-600 text-white px-6 py-2 rounded transition-colors">
-                        Calcular Suma
-                    </button>
+                <!-- Operadores -->
+                <div class="text-center space-y-3">
+                    <div class="text-3xl font-bold text-blue-500" id="operator-display">+</div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button 
+                            id="sum-btn" 
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm transition-colors">
+                            + Suma
+                        </button>
+                        <button 
+                            id="subtract-btn" 
+                            class="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded text-sm transition-colors">
+                            - Resta
+                        </button>
+                        <button 
+                            id="multiply-btn" 
+                            class="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded text-sm transition-colors col-span-2">
+                            × Multiplicar
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Matriz B -->
@@ -87,9 +100,56 @@
                 </div>
             </div>
 
-            <!-- Resultado -->
-            <div id="sum-result" class="mt-6 p-4 rounded hidden">
-                <!-- Aquí se mostrará el resultado -->
+            <!-- Resultado de operaciones con dos matrices -->
+            <div id="operation-result" class="mt-6 p-4 rounded hidden"></div>
+        </div>
+
+        <!-- Operaciones con una matriz -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-6 text-gray-800">🔍 Operaciones con Una Matriz</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Matriz de entrada -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">Matriz de Entrada</h3>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex space-x-2">
+                            <input type="number" id="single11" class="w-16 p-2 border rounded text-center" placeholder="2" value="2">
+                            <input type="number" id="single12" class="w-16 p-2 border rounded text-center" placeholder="1" value="1">
+                        </div>
+                        <div class="flex space-x-2">
+                            <input type="number" id="single21" class="w-16 p-2 border rounded text-center" placeholder="3" value="3">
+                            <input type="number" id="single22" class="w-16 p-2 border rounded text-center" placeholder="4" value="4">
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de operaciones -->
+                    <div class="space-y-2">
+                        <button 
+                            id="transpose-btn" 
+                            class="w-full bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded transition-colors">
+                            🔄 Transpuesta
+                        </button>
+                        <button 
+                            id="determinant-btn" 
+                            class="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded transition-colors">
+                            📊 Determinante
+                        </button>
+                        <button 
+                            id="properties-btn" 
+                            class="w-full bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded transition-colors">
+                            🔎 Propiedades
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div>
+                    <h3 class="text-lg font-medium mb-3 text-gray-700">Resultado</h3>
+                    <div id="single-operation-result" class="min-h-32 p-4 bg-gray-50 rounded border">
+                        <p class="text-gray-500 text-center">Selecciona una operación</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
